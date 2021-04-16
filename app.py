@@ -6,18 +6,11 @@ from credentials import bot_token, URL
 import telegram
 import logging
 from telegram.ext import Updater, ConversationHandler, CallbackQueryHandler
-import webScraper
-
-import nltk
-nltk.download('punkt') #NEED TO RUN THIS THE FIRST TIME YOU USE IT
 
 TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
 
 app = Flask(__name__)
-
-from dbhelper import DBHelper
-import vocabquery
 
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
                     level=logging.INFO)
