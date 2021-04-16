@@ -37,6 +37,7 @@ def respond():
     response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
+    return 'ok'
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
@@ -59,7 +60,7 @@ if __name__ == '__main__':
 def start_info(update):
     user_first_name = update.message.from_user.first_name
     print(update)
-    message = "Hi {}, !\n\n".format(user_first_name)
+    message = "Hi {} !\n\n".format(user_first_name)
     every_message = message + "This is a countdown tracker for Kirthi's birthday. Every day a different message from one of her close ones will be shown.\n\n"
     every_message = every_message + "You can access the message using /message ."
 
