@@ -5,7 +5,7 @@ from credentials import bot_token, URL
 
 import telegram
 import logging
-from telegram.ext import Updater, ConversationHandler, CallbackQueryHandler
+from telegram.ext import Updater
 
 TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
