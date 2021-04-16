@@ -61,6 +61,8 @@ def start_info(update):
     user_first_name = update.message.from_user.first_name
     print(update)
     message = "Hi {} !\n\n".format(user_first_name)
+    if update.message.chat.username == "tejas2805":
+        return "lol"
     every_message = message + "This is a countdown tracker for Kirthi's birthday. Every day a different message from one of her close ones will be shown.\n\n"
     every_message = every_message + "You can access the message using /message ."
 
@@ -79,4 +81,4 @@ def get_response(msg, update):
     if msg == "/message":
         return message_day(update)
     else:
-        return "Wrong input"
+        return "Such a command doesn't exist."
