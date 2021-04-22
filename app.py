@@ -28,7 +28,6 @@ def respond():
     dp = updater.dispatcher
 
     print("Update: " + str(update))
-    print("Update.callback_query: " + str(update.callback_query))
 
     chat_id = update.message.chat.id
     msg_id = update.message.message_id
