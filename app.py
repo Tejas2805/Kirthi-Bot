@@ -88,7 +88,7 @@ def message_day(update):
     today = date.today()
     d1 = today.strftime("%d/%m/%Y")
     d1 = d1.split("/")
-    message = messages[d1]
+    message = messages[d1[0]]
     return message
 
 
