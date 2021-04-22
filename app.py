@@ -27,15 +27,15 @@ def respond():
     updater = Updater('1689944976:AAGJyxSIFGkXehTNjO0YB8ylwY6K3qO9fLQ')  # API key
     dp = updater.dispatcher
 
-    print("Update: " + str(update))
+    #print("Update: " + str(update))
 
     chat_id = update.message.chat.id
     msg_id = update.message.message_id
 
     # Telegram understands UTF-8, so encode text for unicode compatibility
     #text = update.message.text.encode('utf-8').decode()
-    text = update.message
-    print(update.message)
+    text = update.message.text
+    print(update.message.text)
     print("got text message :", text)
 
     response = get_response("ok", update)
