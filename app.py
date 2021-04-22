@@ -16,7 +16,7 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-messages = { 23: { "name": "Rutwick", "x": "ok"} }
+messages = { 22: { "name": "Rutwick", "x": "ok"} }
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -38,7 +38,7 @@ def respond():
     print(update.message.text)
     print("got text message :", text)
 
-    response = get_response("ok", update)
+    response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
     return 'ok'
