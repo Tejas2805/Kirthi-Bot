@@ -2,6 +2,7 @@ import logging
 import telegram
 from flask import Flask, request
 from telegram.ext import Updater
+from datetime import date
 
 from credentials import bot_token, URL
 
@@ -16,7 +17,8 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-messages = { 22: { "name": "Rutwick", "x": "ok"} }
+messages = { "22": "ok",
+             "23": "ok23" }
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -83,7 +85,11 @@ def guess(update, msg):
 
 
 def message_day(update):
-    return "Message of the day shown here."
+    today = date.today()
+    d1 = today.strftime("%d/%m/%Y")
+    d1 = d1.split("/")
+    message = messages[d1]
+    return message
 
 
 def get_response(msg, update):
