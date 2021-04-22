@@ -16,6 +16,9 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
+messages = { 23: { "name": "Rutwick", "x": "ok"} }
+
+
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
     # retrieve the message in JSON and then transform it to Telegram object
@@ -69,6 +72,8 @@ def start_info(update):
     return every_message
 
 def guess(update, msg):
+    if len(msg) != 3:
+        return "Enter 2 things: Name and X with the guess command."
     name = msg[1]
     x = msg[2]
 
