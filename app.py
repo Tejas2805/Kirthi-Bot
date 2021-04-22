@@ -68,6 +68,13 @@ def start_info(update):
 
     return every_message
 
+def guess(update, msg):
+    name = msg[1]
+    x = msg[2]
+
+    message = name + " " + x
+    return message
+
 
 def message_day(update):
     return "Message of the day shown here."
@@ -78,7 +85,9 @@ def get_response(msg, update):
 
     if msg == "/start":
         return start_info(update)
-    if msg == "/message":
+    elif msg == "/message":
         return message_day(update)
+    elif msg_list[0] == "/guess":
+        return guess(update, msg_list)
     else:
         return "Such a command doesn't exist."
