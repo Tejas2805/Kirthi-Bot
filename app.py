@@ -17,8 +17,54 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-messages = { "22": "ok",
-             "23": "ok23" }
+messages = { "02": "ok",
+             "03": "ok23",
+             "04": "04",
+             "05": "ok",
+             "06": "ok23",
+             "07": "04",
+             "08": "ok",
+             "09": "ok23",
+             "10": "04",
+             "11": "ok",
+             "12": "ok23",
+             "13": "04",
+             "14": "ok",
+             "15": "ok23",
+             "16": "04",
+             "17": "ok",
+             "18": "ok23",
+             "19": "04",
+             "20": "ok",
+             "21": "ok23",
+             "22": "04",
+             "23": "ok",
+             "24": "final" }
+
+guesses = { "02": { "name": "Rutwick", "x": "GUESSED" },
+            "03": { "name": "Rutwick", "x": "GUESSED" },
+            "04": { "name": "Rutwick", "x": "GUESSED" },
+            "05": { "name": "Rutwick", "x": "GUESSED" },
+            "06": { "name": "Rutwick", "x": "GUESSED" },
+            "07": { "name": "Rutwick", "x": "GUESSED" },
+            "08": { "name": "Rutwick", "x": "GUESSED" },
+            "09": { "name": "Rutwick", "x": "GUESSED" },
+            "10": { "name": "Rutwick", "x": "GUESSED" },
+            "11": { "name": "Rutwick", "x": "GUESSED" },
+            "12": { "name": "Rutwick", "x": "GUESSED" },
+            "13": { "name": "Rutwick", "x": "GUESSED" },
+            "14": { "name": "Rutwick", "x": "GUESSED" },
+            "15": { "name": "Rutwick", "x": "GUESSED" },
+            "16": { "name": "Rutwick", "x": "GUESSED" },
+            "17": { "name": "Rutwick", "x": "GUESSED" },
+            "18": { "name": "Rutwick", "x": "GUESSED" },
+            "19": { "name": "Rutwick", "x": "GUESSED" },
+            "20": { "name": "Rutwick", "x": "GUESSED" },
+            "21": { "name": "Rutwick", "x": "GUESSED" },
+            "22": { "name": "Rutwick", "x": "GUESSED" },
+            "23": { "name": "Rutwick", "x": "GUESSED" },
+            "24": { "name": "Rutwick", "x": "GUESSED" },
+            }
 
 
 @app.route('/{}'.format(TOKEN), methods=['POST'])
@@ -38,6 +84,7 @@ def respond():
     #text = update.message.text.encode('utf-8').decode()
     text = update.message.text
     print(update.message.text)
+    print()
     print("got text message :", text)
 
     response = get_response(text, update)
