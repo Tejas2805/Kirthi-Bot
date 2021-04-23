@@ -75,7 +75,7 @@ def respond():
     updater = Updater('1689944976:AAGJyxSIFGkXehTNjO0YB8ylwY6K3qO9fLQ')  # API key
     dp = updater.dispatcher
 
-    #print("Update: " + str(update))
+    print("Update: " + str(update))
 
     chat_id = update.message.chat.id
     msg_id = update.message.message_id
@@ -87,7 +87,7 @@ def respond():
     print()
     print("got text message :", text)
 
-    response = get_response("ok", update)
+    response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
     return 'ok'
