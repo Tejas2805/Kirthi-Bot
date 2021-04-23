@@ -126,9 +126,15 @@ def guess(update, msg):
         return "Enter 2 things: Name and X with the guess command."
     name = msg[1]
     x = msg[2]
-
-    message = name + " " + x
-    return message
+    today = date.today()
+    d1 = today.strftime("%d/%m/%Y")
+    d1 = d1.split("/")
+    print("   ")
+    print(guesses[d1[0]]["name"])
+    print(guesses[d1[0]]["x"])
+    if guesses[d1[0]]["name"] == name && guesses[d1[0]]["x"] == x:
+        return "Hurray! It's correct."
+    return "Wrong answer!"
 
 
 def message_day(update):
