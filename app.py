@@ -140,7 +140,8 @@ def guess(update, msg):
 
 def message_day(update):
     pacific_tzinfo = pytz.timezone("Asia/Singapore")
-    print(pacific_tzinfo)
+    pacific_time = default_time.astimezone(pacific_tzinfo)
+    print(pacific_time)
     today = date.today()
     d1 = today.strftime("%d/%m/%Y")
     d1 = d1.split("/")
