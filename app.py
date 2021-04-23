@@ -87,7 +87,7 @@ def respond():
     print()
     print("got text message :", text)
 
-    response = get_response(text, update)
+    response = get_response("ok", update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
     return 'ok'
