@@ -3,6 +3,7 @@ import telegram
 from flask import Flask, request
 from telegram.ext import Updater
 from datetime import date
+import pytz
 
 from credentials import bot_token, URL
 
@@ -138,6 +139,8 @@ def guess(update, msg):
 
 
 def message_day(update):
+    pacific_tzinfo = pytz.timezone("Asia/Singapore")
+    print(pacific_tzinfo)
     today = date.today()
     d1 = today.strftime("%d/%m/%Y")
     d1 = d1.split("/")
