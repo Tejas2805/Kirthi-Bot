@@ -143,7 +143,7 @@ def message_day(update):
     pacific_tzinfo = pytz.timezone("Asia/Singapore")
     pacific_time = today.astimezone(pacific_tzinfo)
     print(pacific_time)
-    d1 = today.strftime("%d/%m/%Y %H:%M:%S")
+    d1 = pacific_time.strftime("%d/%m/%Y %H:%M:%S")
     d1 = d1.split("/")
     message = messages[d1[0]]
     return message
