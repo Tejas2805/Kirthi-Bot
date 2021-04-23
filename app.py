@@ -127,12 +127,12 @@ def guess(update, msg):
         return "Enter 2 things: Name and X with the guess command."
     name = msg[1]
     x = msg[2]
-    today = date.today()
-    d1 = today.strftime("%d/%m/%Y")
+    today = datetime.now()
+    pacific_tzinfo = pytz.timezone("Asia/Singapore")
+    pacific_time = today.astimezone(pacific_tzinfo)
+    d1 = pacific_time.strftime("%d/%m/%Y %H:%M:%S")
     d1 = d1.split("/")
-    print("   ")
-    print(guesses[d1[0]]["name"])
-    print(guesses[d1[0]]["x"])
+
     if guesses[d1[0]]["name"] == name and guesses[d1[0]]["x"] == x:
         return "Hurray! It's correct."
     return "Wrong answer!"
@@ -142,7 +142,6 @@ def message_day(update):
     today = datetime.now()
     pacific_tzinfo = pytz.timezone("Asia/Singapore")
     pacific_time = today.astimezone(pacific_tzinfo)
-    print(pacific_time)
     d1 = pacific_time.strftime("%d/%m/%Y %H:%M:%S")
     d1 = d1.split("/")
     message = messages[d1[0]]
