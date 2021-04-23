@@ -132,7 +132,7 @@ def guess(update, msg):
     print("   ")
     print(guesses[d1[0]]["name"])
     print(guesses[d1[0]]["x"])
-    if guesses[d1[0]]["name"] == name && guesses[d1[0]]["x"] == x:
+    if guesses[d1[0]]["name"] == name and guesses[d1[0]]["x"] == x:
         return "Hurray! It's correct."
     return "Wrong answer!"
 
