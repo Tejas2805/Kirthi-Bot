@@ -88,7 +88,11 @@ def respond():
     print()
     print("got text message :", text)
 
-    response = get_response(text, update)
+    if text == "None":
+        print("NONE RECEIVED")
+        response = get_response("Validation", update)
+    else:
+        response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
     return 'ok'
@@ -155,6 +159,8 @@ def get_response(msg, update):
         return start_info(update)
     elif msg == "/message":
         return message_day(update)
+    elif msg == "Validation":
+        return "Successfully validated"
     elif msg_list[0] == "/guess":
         return guess(update, msg_list)
     else:
