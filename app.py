@@ -88,7 +88,7 @@ def respond():
     print()
     print("got text message :", text)
 
-    if text == "None":
+    if text is None:
         print("NONE RECEIVED")
         response = get_response("Validation", update)
     else:
