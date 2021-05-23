@@ -56,7 +56,7 @@ def set_webhook():
         return "webhook setup failed"
 
 
-@s.route('/')
+@app.route('/')
 def index():
     return '.'
 
@@ -95,4 +95,4 @@ def get_response(msg, update):
     elif msg == "Validation":
         return "Successfully validated"
     else:
-        return "Such a command doesn't exst."
+        return "Such a command doesn't exist."
