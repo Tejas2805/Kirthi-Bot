@@ -68,13 +68,13 @@ if __name__ == '__main__':
 def start_info(update):
 
     print(update)
-    if update.message.chat.username == "kirthi099":
+    if update.message.chat.username == "soumil99" or update.message.chat.username == "kirthi099" or update.message.chat.username == "tejas2805":
         return "Hello Kirthi Rachakonda! We have been expecting you.\n\n The world is faced with a large threat and you are the only who can possibly save us. We just saw your mettle in the selection challenge and believe you are ready for this journey. During your journey your friends might be your comrade in arms or your enemy. But at the end of it, it will all be worth it.\n\n Hope you are ready for the next challenge. Put the answer in the bot and get your next challenge.\n\n Venture On!"
     else:
         return "Sorry but you are not the chosen warrior."
 
 def puzzle_answer(msg):
-    if msg == "No friendship is an accident":
+    if msg == "Friends become our chosen family.":
         return "This was just the start. There is still a long way to go. Hope you enjoyed your first challenge.\n\nNext challenge at 1:30 PM SGT / 11 AM IST."
     elif msg == "Varun":
         return "Looks like we made the right by selecting you. But are you ready for next challenge?.\n\nNext challenge at 5:00 PM SGT / 2:30 PM IST."
