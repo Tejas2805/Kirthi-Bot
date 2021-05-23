@@ -91,7 +91,8 @@ def get_response(msg, update):
     if msg == "/start":
         return start_info(update)
     elif msg_list[0] == "/puzzle_answer":
-        return puzzle_answer(msg_list)
+        if len(msg_list) > 1:
+            return puzzle_answer(msg_list)
     elif msg == "Validation":
         return "Successfully validated"
     else:
