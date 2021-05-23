@@ -29,18 +29,18 @@ def respond():
     print("Update: " + str(update))
 
     text = update.message.text
+
+    chat_id = update.message.chat.id
+    #msg_id = update.message.message_id
+
+    text = update.message.text
+    print(update.message.text)
+    print()
+
     if text is None:
         print("NONE RECEIVED")
         response = get_response("Validation", update)
     else:
-        chat_id = update.message.chat.id
-        msg_id = update.message.message_id
-
-        # Telegram understands UTF-8, so encode text for unicode compatibility
-        #text = update.message.text.encode('utf-8').decode()
-        text = update.message.text
-        print(update.message.text)
-        print()
         response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
@@ -73,24 +73,25 @@ def start_info(update):
         return "Sorry but you are not the chosen warrior."
 
 def puzzle_answer(msg):
-    if msg == "Friends become our chosen family.":
+    if msg[1] == "Friends":
         return "This was just the start. There is still a long way to go. Hope you enjoyed your first challenge.\n\nNext challenge at 1:30 PM SGT / 11 AM IST."
-    elif msg == "Varun":
+    elif msg[1] == "Varun":
         return "Looks like we made the right by selecting you. But are you ready for next challenge?.\n\nNext challenge at 5:00 PM SGT / 2:30 PM IST."
-    elif msg == "blueflower":
+    elif msg[1] == "blueflower":
         return "You just cracked another one. Keep it going.\n\nNext challenge at 9:00 PM SGT / 6:30 PM IST."
-    elif msg == "22":
+    elif msg[1] == "22":
         return "You are almost there but now is the time for the toughest one ever. The world's faith depends on you.\n\nNext challenge at 11:30 PM SGT / 9 PM IST."
     else:
         return "That is not the answer. Please don't be cheeky. "
 
 
 def get_response(msg, update):
+    msg_list = msg.split(" ")
 
     if msg == "/start":
         return start_info(update)
-    elif msg == "/puzzle_answer":
-        return puzzle_answer(msg)
+    elif msg_list[0] == "/puzzle_answer":
+        return puzzle_answer(msg_list)
     elif msg == "Validation":
         return "Successfully validated"
     else:
