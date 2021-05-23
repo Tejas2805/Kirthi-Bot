@@ -95,4 +95,4 @@ def get_response(msg, update):
     elif msg == "Validation":
         return "Successfully validated"
     else:
-        return "Such a command doesn't exist."
+        return "Such a command doesn't exst."
