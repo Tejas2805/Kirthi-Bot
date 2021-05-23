@@ -28,20 +28,19 @@ def respond():
 
     print("Update: " + str(update))
 
-    chat_id = update.message.chat.id
-    msg_id = update.message.message_id
-
-    # Telegram understands UTF-8, so encode text for unicode compatibility
-    #text = update.message.text.encode('utf-8').decode()
     text = update.message.text
-    print(update.message.text)
-    print()
-    print("got text message :", text)
-
     if text is None:
         print("NONE RECEIVED")
         response = get_response("Validation", update)
     else:
+        chat_id = update.message.chat.id
+        msg_id = update.message.message_id
+
+        # Telegram understands UTF-8, so encode text for unicode compatibility
+        #text = update.message.text.encode('utf-8').decode()
+        text = update.message.text
+        print(update.message.text)
+        print()
         response = get_response(text, update)
     if response != "no_response":
         bot.sendMessage(chat_id=chat_id, text=response, parse_mode=telegram.ParseMode.MARKDOWN)
@@ -68,8 +67,8 @@ if __name__ == '__main__':
 def start_info(update):
 
     print(update)
-    if update.message.chat.username == "soumil99" or update.message.chat.username == "kirthi099" or update.message.chat.username == "tejas2805":
-        return "Hello Kirthi Rachakonda! We have been expecting you.\n\n The world is faced with a large threat and you are the only who can possibly save us. We just saw your mettle in the selection challenge and believe you are ready for this journey. During your journey your friends might be your comrade in arms or your enemy. But at the end of it, it will all be worth it.\n\n Hope you are ready for the next challenge. Put the answer in the bot and get your next challenge.\n\n Venture On!"
+    if update.message.chat.username == "Soumil99" or update.message.chat.username == "kirthi099" or update.message.chat.username == "tejas2805":
+        return "Hello Kirthi Rachakonda! We have been expecting you.\n\nThe world is faced with a large threat and you are the only who can possibly save us. We just saw your mettle in the selection challenge and believe you are ready for this journey. During your journey your friends might be your comrade in arms or your enemy. But at the end of it, it will all be worth it.\n\nHope you are ready for the next challenge. Put the answer in the bot and get your next challenge.\n\nVenture On!"
     else:
         return "Sorry but you are not the chosen warrior."
 
