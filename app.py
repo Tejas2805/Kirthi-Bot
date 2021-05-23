@@ -18,56 +18,6 @@ logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-messages = { "02": "ok",
-             "03": "ok23",
-             "04": "04",
-             "05": "ok",
-             "06": "ok23",
-             "07": "04",
-             "08": "ok",
-             "09": "ok23",
-             "10": "04",
-             "11": "ok",
-             "12": "ok23",
-             "13": "04",
-             "14": "ok",
-             "15": "ok23",
-             "16": "04",
-             "17": "ok",
-             "18": "ok23",
-             "19": "04",
-             "20": "ok",
-             "21": "ok23",
-             "22": "04",
-             "23": "ok",
-             "24": "final" }
-
-guesses = { "02": { "name": "Rutwick", "x": "GUESSED" },
-            "03": { "name": "Rutwick", "x": "GUESSED" },
-            "04": { "name": "Rutwick", "x": "GUESSED" },
-            "05": { "name": "Rutwick", "x": "GUESSED" },
-            "06": { "name": "Rutwick", "x": "GUESSED" },
-            "07": { "name": "Rutwick", "x": "GUESSED" },
-            "08": { "name": "Rutwick", "x": "GUESSED" },
-            "09": { "name": "Rutwick", "x": "GUESSED" },
-            "10": { "name": "Rutwick", "x": "GUESSED" },
-            "11": { "name": "Rutwick", "x": "GUESSED" },
-            "12": { "name": "Rutwick", "x": "GUESSED" },
-            "13": { "name": "Rutwick", "x": "GUESSED" },
-            "14": { "name": "Rutwick", "x": "GUESSED" },
-            "15": { "name": "Rutwick", "x": "GUESSED" },
-            "16": { "name": "Rutwick", "x": "GUESSED" },
-            "17": { "name": "Rutwick", "x": "GUESSED" },
-            "18": { "name": "Rutwick", "x": "GUESSED" },
-            "19": { "name": "Rutwick", "x": "GUESSED" },
-            "20": { "name": "Rutwick", "x": "GUESSED" },
-            "21": { "name": "Rutwick", "x": "GUESSED" },
-            "22": { "name": "Rutwick", "x": "GUESSED" },
-            "23": { "name": "Rutwick", "x": "GUESSED" },
-            "24": { "name": "Rutwick", "x": "GUESSED" },
-            }
-
-
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
     # retrieve the message in JSON and then transform it to Telegram object
@@ -106,7 +56,7 @@ def set_webhook():
         return "webhook setup failed"
 
 
-@app.route('/')
+@s.route('/')
 def index():
     return '.'
 
@@ -116,52 +66,33 @@ if __name__ == '__main__':
 
 
 def start_info(update):
-    user_first_name = update.message.from_user.first_name
+
     print(update)
-    message = "Hi {} !\n\n".format(user_first_name)
     if update.message.chat.username == "kirthi099":
-        return "Hi Kirthi!\n\n Welcome to your birthday countdown tracker! You can access today's message using /message."
-    every_message = message + "This is a countdown tracker for Kirthi's birthday. \n\n"
-    every_message = every_message + "You can access today's message using /message ."
+        return "Hello Kirthi Rachakonda! We have been expecting you.\n\n The world is faced with a large threat and you are the only who can possibly save us. We just saw your mettle in the selection challenge and believe you are ready for this journey. During your journey your friends might be your comrade in arms or your enemy. But at the end of it, it will all be worth it.\n\n Hope you are ready for the next challenge. Put the answer in the bot and get your next challenge.\n\n Venture On!"
+    else:
+        return "Sorry but you are not the chosen warrior."
 
-    return every_message
-
-def guess(update, msg):
-    if len(msg) != 3:
-        return "Enter 2 things: Name and X with the guess command."
-    name = msg[1]
-    x = msg[2]
-    today = datetime.now()
-    pacific_tzinfo = pytz.timezone("Asia/Singapore")
-    pacific_time = today.astimezone(pacific_tzinfo)
-    d1 = pacific_time.strftime("%d/%m/%Y %H:%M:%S")
-    d1 = d1.split("/")
-
-    if guesses[d1[0]]["name"] == name and guesses[d1[0]]["x"] == x:
-        return "Hurray! It's correct."
-    return "Wrong answer!"
-
-
-def message_day(update):
-    today = datetime.now()
-    pacific_tzinfo = pytz.timezone("Asia/Singapore")
-    pacific_time = today.astimezone(pacific_tzinfo)
-    d1 = pacific_time.strftime("%d/%m/%Y %H:%M:%S")
-    d1 = d1.split("/")
-    message = messages[d1[0]]
-    return message
+def puzzle_answer(msg):
+    if msg == "No friendship is an accident":
+        return "This was just the start. There is still a long way to go. Hope you enjoyed your first challenge.\n\nNext challenge at 1:30 PM SGT / 11 AM IST."
+    elif msg == "Varun":
+        return "Looks like we made the right by selecting you. But are you ready for next challenge?.\n\nNext challenge at 5:00 PM SGT / 2:30 PM IST."
+    elif msg == "blueflower":
+        return "You just cracked another one. Keep it going.\n\nNext challenge at 9:00 PM SGT / 6:30 PM IST."
+    elif msg == "22":
+        return "You are almost there but now is the time for the toughest one ever. The world's faith depends on you.\n\nNext challenge at 11:30 PM SGT / 9 PM IST."
+    else:
+        return "That is not the answer. Please don't be cheeky. "
 
 
 def get_response(msg, update):
-    msg_list = msg.split(' ')
 
     if msg == "/start":
         return start_info(update)
-    elif msg == "/message":
-        return message_day(update)
+    elif msg == "/puzzle_answer":
+        return puzzle_answer(msg)
     elif msg == "Validation":
         return "Successfully validated"
-    elif msg_list[0] == "/guess":
-        return guess(update, msg_list)
     else:
         return "Such a command doesn't exist."
